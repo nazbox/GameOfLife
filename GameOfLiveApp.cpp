@@ -1,26 +1,29 @@
 #include "GameOfLiveApp.h"
 
-GameOfLiveApp::GameOfLiveApp(char** _masSquereArea, uint _sizeSquereArea):squareGrid(_masSquereArea, _sizeSquereArea)
+GameOfLiveApp::GameOfLiveApp(vector< vector<char> > &_data):grid(_data)
 {
     //empty
 }
 
 void GameOfLiveApp::Run()
 {
-    char outCh = 0;
-    int i = 0;
-
-    //Transition to a new generation or exit from the application
-    while(true)
+    if(grid.IsValidData() == true)
     {
-        cout<<"Generation "<<i++<<"\n";
-        squareGrid.PrintCells();
+        char outCh = 0;
+        int i = 0;
 
-        cout<<"Type 'c' to continue or 'e' for exit\n";
-        cin>>outCh;
-        if(outCh == 'e')
-            break;
+        //Transition to a new generation or exit from the application
+        while(true)
+        {
+            cout<<"Generation "<<i++<<"\n";
+            grid.PrintCells();
 
-        squareGrid.DefineNewGeneration();
+            cout<<"Type 'c' to continue or 'e' for exit\n";
+            cin>>outCh;
+            if(outCh == 'e')
+                break;
+
+            grid.DefineNewGeneration();
+        }
     }
 }

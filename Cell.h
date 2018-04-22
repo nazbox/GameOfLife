@@ -3,6 +3,8 @@
 #include <string>
 #include <map>
 #include <iostream>
+#include <vector>
+#include <stdio.h>
 
 using namespace std;
 typedef unsigned int uint;
@@ -18,12 +20,11 @@ class Cell
     Cell * neighbors[8];
 
     string name;
-
 public:
     Cell(uint _y, uint _x);
 
     void SetInitState(char _state);
-    void SetNeighbors(Cell** _masNeighbors);
+    void SetNeighbors(vector<Cell *> &_masNeighbors);
 
     string GetName();
 
@@ -34,6 +35,7 @@ public:
     void DefineNextState(map<string, Cell *> &changedCells);
 
     void SetNextState();
+
 private:
     char GetOwnNextState();
 };

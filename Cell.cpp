@@ -29,7 +29,7 @@ void Cell::SetInitState(char _state)
     }
 }
 
-void Cell::SetNeighbors(Cell **_masNeighbors)
+void Cell::SetNeighbors(vector<Cell *> &_masNeighbors)
 {
     for(uint i = 0; i < 8; i++)
         neighbors[i] = _masNeighbors[i];

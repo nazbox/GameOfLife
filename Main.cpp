@@ -3,40 +3,37 @@
 
 #include "GameOfLiveApp.h"
 
+
 //Data for first generation
-const uint sizeOutput = 8;
-const char output[sizeOutput][sizeOutput] =
+
+const uint g_size_y = 7;
+const uint g_size_x = 8;
+const char g_data[g_size_y][g_size_x] =
 {
-    {'.','.','.','.','.','.','.','.'},
-    {'.','.','#','.','.','.','.','.'},
-    {'.','.','.','#','.','.','.','.'},
-    {'.','#','#','#','.','.','.','.'},
-    {'.','.','.','.','.','.','.','.'},
-    {'.','.','.','.','.','.','.','.'},
-    {'.','.','.','.','.','.','.','.'},
-    {'.','.','.','.','.','.','.','.'}
+    {'*','*','*','*','*','*','*','*'},
+    {'*','*','#','*','*','*','*','*'},
+    {'*','*','*','#','*','*','*','*'},
+    {'*','#','#','#','*','*','*','*'},
+    {'*','*','*','*','*','*','*','*'},
+    {'*','*','*','*','*','*','*','*'},
+    {'*','*','*','*','*','*','*','*'}
 };
 
 int main()
 {
-    //Memory allocation and copy data for first-generation
-    char **initData;
-    initData = new char*[sizeOutput];
-    for(uint y = 0; y < sizeOutput; y++)
+    vector< vector<char> > data;
+
+    //Copy data for first-generation
+    for(uint y = 0; y < g_size_y; y++)
     {
-        initData[y] = new char[sizeOutput];
-        for(uint x = 0; x < sizeOutput; x++)
-            initData[y][x] = output[y][x];
+        data.push_back(vector<char>());
+        for(uint x = 0; x < g_size_x; x++)
+            data[y].push_back(g_data[y][x]);
     }
 
     //Launch simulation of game
-    GameOfLiveApp app(initData, sizeOutput);
+    GameOfLiveApp app(data);
     app.Run();
-
-    //Deallocation memory for first-generation data
-    for(uint y = 0; y < sizeOutput; y++)
-        delete [] initData[y];
-    delete [] initData;
 
     return 0;
 }

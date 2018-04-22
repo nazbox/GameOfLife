@@ -1,11 +1,11 @@
 #pragma once
 
-#include "SquareGrid.h"
+#include "Grid.h"
 
 class GameOfLiveApp
 {
-    SquareGrid squareGrid;
+    Grid grid;
 public:
-    GameOfLiveApp(char** _masSquereArea, uint _sizeSquereArea);
+    GameOfLiveApp(vector< vector<char> > &_data);
     void Run();
 };
